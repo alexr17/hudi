@@ -18,8 +18,6 @@
 
 package org.apache.hudi.client.transaction.lock.models;
 
-import org.apache.hudi.common.util.VisibleForTesting;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -145,7 +143,6 @@ public class LockProviderHeartbeatManager implements HeartbeatManager {
             DEFAULT_LOGGER);
   }
 
-  @VisibleForTesting
   LockProviderHeartbeatManager(String ownerId,
                                ScheduledExecutorService scheduler,
                                long heartbeatTimeMs,
@@ -167,7 +164,7 @@ public class LockProviderHeartbeatManager implements HeartbeatManager {
    */
   private static ScheduledExecutorService createThreadScheduler(String shortUuid) {
     return Executors.newSingleThreadScheduledExecutor(
-            r -> new Thread(r, "LockProvider-HeartbeatManager-Thread-" + shortUuid));
+        r -> new Thread(r, "LockProvider-HeartbeatManager-Thread-" + shortUuid));
   }
 
   /**
